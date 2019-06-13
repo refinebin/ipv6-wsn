@@ -1,0 +1,106 @@
+    #style-selector {
+        position: fixed;
+        top: 80px;
+        right: 0;
+        z-index: 9999;
+        -webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, .3);
+                box-shadow: 0 5px 20px rgba(0, 0, 0, .3);
+    }
+    .style-selector-wrapper {
+        position: relative;
+        z-index: 9999;
+        display: inline-block;
+        background: #FFF;
+    }
+    .style-selector-wrapper > div {
+        margin: 25px 20px 25px 25px;
+    }
+    #style-selector a.close {
+        position: absolute;
+        top: 55px;
+        left: -34px;
+        width: 34px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background: #fff;
+        border-radius: 3px 0 0 3px;
+        -webkit-box-shadow: 0 3px 12px rgba(0, 0, 0, .3);
+                box-shadow: 0 3px 12px rgba(0, 0, 0, .3);
+    }
+    #style-selector a.active {
+        box-shadow: 0 0 0 2px #000;
+    }
+    #style-selector h2 {
+        height: 40px;
+        background: #F2F2F2;
+        text-align: center;
+        font-size: 14px;
+        line-height: 40px;
+    }
+    #style-selector h3 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        color: #959595;
+        text-align: center;
+        font-weight: normal;
+        font-size: 12px;
+    }
+    #style-selector ul {
+        width: 160px;
+    }
+    #style-selector .styles {
+        overflow: hidden;
+        margin: 0px 0px 10px 0px;
+    }
+    #style-selector .styles li {
+        float: left;
+    }
+    #style-selector .styles li a {
+        display: block;
+        margin: 3px;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+    }
+    .layout select {
+        margin: 0 3px;
+        width: 100%;
+        font-size: 12px;
+    }
+    .bg-image img {
+        width: auto;
+        height: 100%;
+    }
+
+    .color-yellow       { background: #fec901; }
+    .color-blue         { background: #78b9f7; }
+    .color-cream        { background: #e0dac9; }
+    .color-darkgray     { background: #333; }
+    .color-green        { background: #9bcc45; }
+    .color-lightgray    { background: #dbdcde; }
+    .color-orange       { background: #fe9601; }
+    .color-pink         { background: #ff9dbc; }
+    .color-red          { background: #d73300; }
+    .color-tan          { background: #d7ad7c; }
+
+    .bg-img01 { background: url("../images/backgrounds/bg_img01.jpg"); }
+    .bg-img02 { background: url("../images/backgrounds/bg_img02.jpg"); }
+    .bg-img03 { background: url("../images/backgrounds/bg_img03.jpg"); }
+    .bg-img04 { background: url("../images/backgrounds/bg_img04.jpg"); }
+    .bg-img05 { background: url("../images/backgrounds/bg_img05.jpg"); }
+    
+    .bg-pat01 { background: url("../images/backgrounds/black_twill.png"); }
+    .bg-pat02 { background: url("../images/backgrounds/dark_fabric.png"); }
+    .bg-pat03 { background: url("../images/backgrounds/dark_matter.png"); }
+    .bg-pat04 { background: url("../images/backgrounds/knit.png"); }
+    .bg-pat05 { background: url("../images/backgrounds/leather.png"); }
+    .bg-pat06 { background: url("../images/backgrounds/lghtmesh.png"); }
+    .bg-pat07 { background: url("../images/backgrounds/navy_blue.png"); }
+    .bg-pat08 { background: url("../images/backgrounds/px_by_Gre3g.png"); }
+    .bg-pat09 { background: url("../images/backgrounds/retina_wood.png"); }
+    .bg-pat10 { background: url("../images/backgrounds/tileable_wood_texture.png"); }
+
+
+
+

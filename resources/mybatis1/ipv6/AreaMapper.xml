@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AreaMapper">
+	
+	<!--表名 -->
+	<sql id="tableName">
+		IP_AREA
+	</sql>
+
+	<sql id="user">
+		SYS_USER
+	</sql>
+
+	<!-- 字段 -->
+	<sql id="Field">
+		AREA_ID,	
+		AREA_NAME,
+		USER_ID,
+		MODIFY_TIME,	
+		CREATE_TIME,	
+		IS_DELETE
+	</sql>
+
+	<!-- 字段值 -->
+	<sql id="FieldValue">
+		#{AREA_ID},	
+		#{AREA_NAME},
+		#{USER_ID},
+		#{MODIFY_TIME},	
+		#{CREATE_TIME},	
+		#{IS_DELETE}
+	</sql>
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into 
+			<include refid="tableName"></include>
+
+		(
+			AREA_NAME,
+			USER_ID,
+			MODIFY_TIME,
+			CREATE_TIME,
+			IS_DELETE
+		) values (
+			#{AREA_NAME},
+			#{USER_ID},
+			NOW(),
+			NOW(),
+			0
+		)
+	</insert>
+	
+	<!-- 删除-->
+	<update id="delete" parameterType="pd">
+		update
+		<include refid="tableName"></include>
+		set
+			IS_DELETE = 1,
+			MODIFY_TIME = NOW()
+		where
+			AREA_ID = #{AREA_ID}
+	</update>
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update
+		<include refid="tableName"></include>
+		set 
+			AREA_NAME = #{AREA_NAME},
+			USER_ID = #{USER_ID},
+			MODIFY_TIME = NOW()
+		where 
+		AREA_ID = #{AREA_ID}
+	</update>
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select
+			IP_AREA.AREA_ID,
+			AREA_NAME,
+			IP_AREA.USER_ID,
+			IP_AREA.MODIFY_TIME,
+			IP_AREA.CREATE_TIME,
+			IP_AREA.IS_DELETE,
+			NAME
+		from
+		<include refid="tableName"></include>
+		LEFT JOIN <include refid="user"></include>
+		ON (IP_AREA.USER_ID = SYS_USER.USER_ID)
+		where
+		IP_AREA.AREA_ID = #{AREA_ID}
+		and
+		IP_AREA.IS_DELETE = 0
+	</select>
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select
+		IP_AREA.AREA_ID,
+		AREA_NAME,
+		IP_AREA.USER_ID,
+		IP_AREA.MODIFY_TIME,
+		IP_AREA.CREATE_TIME,
+		IP_AREA.IS_DELETE,
+		NAME
+		from
+		<include refid="tableName"></include>
+		LEFT JOIN <include refid="user"></include>
+		ON (IP_AREA.USER_ID = SYS_USER.USER_ID)
+		where 1=1
+		and
+		IP_AREA.IS_DELETE = 0
+		<if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
+			and
+				(
+				<!--	根据需求自己加检索条件
+					字段1 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+					 or 
+					字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+				-->
+					AREA_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+				)
+		</if>
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+		IP_AREA.AREA_ID,
+		AREA_NAME,
+		IP_AREA.USER_ID,
+		IP_AREA.MODIFY_TIME,
+		IP_AREA.CREATE_TIME,
+		IP_AREA.IS_DELETE,
+		NAME
+		from
+		<include refid="tableName"></include>
+		LEFT JOIN <include refid="user"></include>
+		ON (IP_AREA.USER_ID = SYS_USER.USER_ID)
+		where
+		IP_AREA.IS_DELETE = 0
+	</select>
+	
+	<!-- 批量删除 -->
+	<update id="deleteAll" parameterType="String">
+		update
+		<include refid="tableName"></include>
+		set
+		IS_DELETE = 1,
+		MODIFY_TIME = NOW()
+		where 
+			AREA_ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</update>
+	
+	<!-- fh313596790qq(青苔) -->
+</mapper>

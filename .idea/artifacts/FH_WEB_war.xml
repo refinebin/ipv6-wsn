@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="FH-WEB:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/FH_WEB_war</output-path>
+    <root id="archive" name="FH-WEB_war.war">
+      <element id="artifact" artifact-name="FH-WEB:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/WebRoot/WEB-INF/lib/javax.activation-1.2.0.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebRoot/WEB-INF/lib/spring-websocket-4.0.0.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebRoot/WEB-INF/lib/websocket-api.jar" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

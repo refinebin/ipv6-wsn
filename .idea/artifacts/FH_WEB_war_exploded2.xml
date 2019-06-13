@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="FH-WEB:war exploded2">
+    <output-path>$PROJECT_DIR$/out/artifacts/FH_WEB_war_exploded2</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="FH-WEB" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/WebRoot/WEB-INF/lib/javax.activation-1.2.0.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebRoot/WEB-INF/lib/spring-websocket-4.0.0.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebRoot/WEB-INF/lib/websocket-api.jar" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="FH-WEB/web/Web" />
+    </root>
+  </artifact>
+</component>

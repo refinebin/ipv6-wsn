@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="lab_monitor">
+    <output-path>$PROJECT_DIR$/out/artifacts/lab_monitor</output-path>
+    <root id="archive" name="lab_monitor.war">
+      <element id="artifact" artifact-name="FH-WEB:war exploded2" />
+    </root>
+  </artifact>
+</component>

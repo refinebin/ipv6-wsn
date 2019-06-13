@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="FireRecordMapper">
+	
+	<!--表名 -->
+	<sql id="tableName">
+		IP_FIRE_RECORD
+	</sql>
+	
+	<!-- 字段 -->
+	<sql id="Field">
+		RECORD_ID,	
+		KIND_ID,	
+		CREATE_TIME,	
+		AREA_ID,	
+		MODIFY_TIME,	
+		IS_DELETE
+	</sql>
+	
+	<!-- 字段值 -->
+	<sql id="FieldValue">
+		#{RECORD_ID},	
+		#{KIND_ID},	
+		#{CREATE_TIME},	
+		#{AREA_ID},	
+		#{MODIFY_TIME},	
+		#{IS_DELETE}
+	</sql>
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into 
+	<include refid="tableName"></include>
+		(
+	<include refid="Field"></include>
+		) values (
+	<include refid="FieldValue"></include>
+		)
+	</insert>
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		update
+		<include refid="tableName"></include>
+		set
+		IS_DELETE = 0,
+		MODIFY_TIME = NOW()
+		where
+		RECORD_ID = #{RECORD_ID}
+	</delete>
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update
+		<include refid="tableName"></include>
+		set 
+			RECORD_ID = #{RECORD_ID},
+			KIND_ID = #{KIND_ID},
+			AREA_ID = #{AREA_ID},
+			MODIFY_TIME = now()
+		where
+		RECORD_ID = #{RECORD_ID}
+	</update>
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
+		where
+		RECORD_ID = #{RECORD_ID}
+	</select>
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		SELECT KIND_NAME,IP_FIRE_RECORD.CREATE_TIME,AREA_NAME
+		FROM IP_FIRE_RECORD
+		LEFT JOIN IP_FIRE_KIND
+		ON IP_FIRE_RECORD.KIND_ID = IP_FIRE_KIND.KIND_ID
+		LEFT JOIN IP_AREA
+		ON IP_FIRE_RECORD.AREA_ID = IP_AREA.AREA_ID
+		WHERE IP_FIRE_RECORD.IS_DELETE = 0 AND IP_FIRE_KIND.IS_DELETE = 0 AND IP_AREA.IS_DELETE = 0
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
+	</select>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from
+		<include refid="tableName"></include>
+		where 
+			FIRERECORD_ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	
+	<!-- fh313596790qq(青苔) -->
+</mapper>
