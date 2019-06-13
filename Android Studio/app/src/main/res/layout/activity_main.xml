@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:padding="20dp"-->
+    <!--android:background="@drawable/repeat_bg"-->
+    <!--tools:context=".view.viewActivity.MainActivity">-->
+
+    <!--<com.polaris.ipv6.util.ClickRunning-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
+
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+        <!--xmlns:tools="http://schemas.android.com/tools"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="vertical"-->
+        <!--android:padding="20dp"-->
+        <!--tools:context=".view.viewActivity.MainActivity">-->
+
+        <!--<Button-->
+            <!--android:id="@+id/area_btn"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@drawable/bt3"-->
+            <!--android:text="查看区域" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/sensor_btn"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@drawable/bt3"-->
+            <!--android:text="查看传感器"-->
+            <!--android:layout_marginTop="15dp"/>-->
+
+
+        <!--<Button-->
+            <!--android:id="@+id/sensor_forecast_btn"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@drawable/bt3"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:text="火灾预测" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/fire_record_btn"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@drawable/bt3"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:text="查看消防档案" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/escape_routes_btn"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@drawable/bt3"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:text="查看火灾疏散路线" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/call_btn"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@drawable/bt3"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:text="拨打电话" />-->
+
+    <!--</LinearLayout>-->
+
+<!--</RelativeLayout>-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/activity_sliding_tab"/>
+    <FrameLayout
+        android:id="@+id/id_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </FrameLayout>
+
+
+
+</LinearLayout>

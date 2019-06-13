@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.viewActivity.EscapeRoutesActivity"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/escape_routes_image"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/select_image_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="选择路线" />
+
+    <Button
+        android:id="@+id/up_image_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="上传路线" />
+</LinearLayout>
