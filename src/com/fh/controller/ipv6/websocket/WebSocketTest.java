@@ -63,19 +63,6 @@ public class WebSocketTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //从数据库查到消息即可
-        sendMessage1 = "2@1#0.014!0.003!0.002@2019-04-18";
-        sendMessage2 = "2@2#0.014!0.003!0.002@2019-04-18";
-        sendMessage3 = "2@3#0.014!0.003!0.002@2019-04-18";
-
-//        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
-//        String date = df.format(new Date());
-//        System.out.println(df.format(new Date()));// new Date()为获取当前系统时间
-//        String recordValue = selectSql();
-//        recordValue= recordValue+"@"+date;
-//        sendMessage1 = "2@1#"+recordValue;
-//        sendMessage2 = "2@2#"+recordValue;
-//        sendMessage3 = "2@3#"+recordValue;
         String arr[] = {sendMessage1,sendMessage2,sendMessage3};
         for(int i = 0;i<=2;i++){
             sendMessage = arr[i];
@@ -185,34 +172,14 @@ public class WebSocketTest {
      */
     public void onMessageFromPy(String[] message){
         List list = null;
-        double ming = 0.1034516128446871;
-        double yin = 0.169460925175726;
-        double wu = 0.9758021705891878;
-        double a = Math.random();
-        double b = Math.random();
-        double c = Math.random();
-        a/=100;
-        b/=100;
-        c/=100;
-        ming-=a;
-        yin-=b;
-        wu-=c;
-        System.out.println(a+"  _____随机数  "+b+"   "+c);
-        System.out.println(ming+"  _____减后  "+yin+"   "+wu);
-
-
         try{
             String type[] = sendMessage.split("@");
             String data[] = type[1].split("#");
             String sensor[] = data[1].split("!");
             List result = new ArrayList();
-//            for(int i = 0;i<=2;i++){
-//                String res[] = message[i].split("@");
-//                result.add(res[0]);
-//            }
-            result.add(ming);
-            result.add(yin);
-            result.add(wu);
+            result.add(message[0]);
+            result.add(message[1]);
+            result.add(message[2]);
             list = new ArrayList();
             list.add(sensor[0]);
             list.add(sensor[1]);
@@ -220,16 +187,7 @@ public class WebSocketTest {
             list.add(result);
             list.add("7501");
         }catch (Exception e){
-            list = new ArrayList();
-            list.add("28");
-            list.add("294");
-            list.add("75");
-            List result = new ArrayList();
-            result.add(ming);
-            result.add(yin);
-            result.add(wu);
-            list.add(result);
-            list.add("7501");
+            System.out.println(e);
         }
 
         try{
@@ -299,9 +257,9 @@ public class WebSocketTest {
 
     private void getConn() throws Exception{
         String driver = "com.mysql.jdbc.Driver";
-        String url = "jdbc:mysql://127.0.0.1:3306/test_ipv6";
-        String username = "root";
-        String password = "123456";
+        String url = "";
+        String username = "";
+        String password = "";
         Class.forName(driver); //classLoader,加载对应驱动
         conn =  DriverManager.getConnection(url, username, password);
     }
@@ -347,9 +305,6 @@ public class WebSocketTest {
                     }
                 }
                 System.out.println();
-                if (mark<3){
-                    recordValue = "0.014!0.003!0.002";
-                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
