@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.room.receive.mapper.SensorMapper">
+
+    <select id="selectBySensorId" resultType="com.room.receive.entity.Sensor">
+        SELECT sensor_id, area_id, sensor_name, threshold_value, create_time, modify_time, is_delete
+        FROM ip_sensor
+        WHERE is_delete=0 AND sensor_id=#{sensorId}
+    </select>
+
+
+</mapper>

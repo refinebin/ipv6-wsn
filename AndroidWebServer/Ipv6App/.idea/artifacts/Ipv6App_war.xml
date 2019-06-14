@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Ipv6App:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="Ipv6App-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Ipv6App:war exploded" />
+    </root>
+  </artifact>
+</component>

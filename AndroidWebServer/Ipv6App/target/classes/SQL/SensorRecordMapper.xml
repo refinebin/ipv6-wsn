@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.polaris.mapper.SensorRecordMapper">
+
+    <select id="getAllSensorRecord" resultType="com.polaris.entity.SensorRecordEntity">
+        SELECT record_value,create_time FROM ip_record where sensor_id = #{sensorId} and is_delete=0 LIMIT 20
+    </select>
+
+</mapper>

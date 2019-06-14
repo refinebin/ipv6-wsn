@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.polaris.mapper.AreaMapper">
+    <select id="getAllAreaInfo" resultType="com.polaris.entity.AreaEntity">
+        SELECT area_name,NAME FROM ip_area LEFT JOIN sys_user ON ip_area.user_id = sys_user.USER_ID WHERE is_delete = 0
+    </select>
+</mapper>

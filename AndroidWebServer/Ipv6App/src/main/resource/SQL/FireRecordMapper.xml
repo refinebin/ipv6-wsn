@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.polaris.mapper.FireRecordMapper">
+    <select id="getAllFireRecordInfo" resultType="com.polaris.entity.FireRecordEntity">
+        SELECT kind_name,ip_fire_record.create_time,area_name
+        from ip_fire_record
+        LEFT JOIN ip_fire_kind ON ip_fire_record.kind_id = ip_fire_kind.kind_id
+        LEFT JOIN ip_area on ip_fire_record.area_id = ip_area.area_id
+        WHERE ip_area.is_delete = 0 AND ip_fire_kind.is_delete = 0 AND ip_fire_record.is_delete = 0
+    </select>
+</mapper>

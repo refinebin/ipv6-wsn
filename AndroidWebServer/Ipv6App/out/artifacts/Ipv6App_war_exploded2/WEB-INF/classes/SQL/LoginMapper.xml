@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.polaris.mapper.LoginMapper">
+    <select id="checkPassword" resultType="String">
+        SELECT `PASSWORD` FROM sys_user where `USERNAME` = 'polaris' AND `status` = 0
+    </select>
+</mapper>

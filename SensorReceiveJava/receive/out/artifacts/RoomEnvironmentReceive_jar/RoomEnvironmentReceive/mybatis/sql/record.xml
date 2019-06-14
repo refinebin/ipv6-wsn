@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.room.receive.mapper.RecordMapper">
+
+    <select id="selectRecordBySensorId" resultType="com.room.receive.entity.Record">
+        SELECT id, sensor_id, area_id, 'value', create_time, modify_time, is_delete
+        FROM ip_record
+        WHERE is_delete=0 AND sensor_id=#{sensorId}
+    </select>
+
+    <insert id="insertRecord" >
+        INSERT
+        INTO ip_record
+        (sensor_id, area_id, record_value, create_time, modify_time, is_delete)
+        VALUES
+        (#{record.sensorId}, #{record.areaId}, #{record.recordValue}, #{record.createTime}, #{record.modifyTime}, #{record.isDelete})
+    </insert>
+
+
+</mapper>

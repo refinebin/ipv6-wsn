@@ -1,0 +1,96 @@
+package com.room.receive.thread;
+
+
+import com.room.receive.service.ReceiveService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.SocketException;
+
+/**
+ * Created by 10238 on 2018/3/8.
+ * @author liangjh
+ */
+public class ReceiveThread extends Thread{
+
+    Logger logger = LoggerFactory.getLogger(ReceiveThread.class);
+
+    /**
+     * 服务开启/关闭
+     */
+    private boolean mark = true;
+    /**
+     * 最大接收字节长度
+     */
+    private final int MAX_LENGTH = 1024;
+    /**
+     * 监听端口
+     */
+    private final int PORT = 6666;
+
+    /**
+     * UDPServer
+     */
+    private DatagramSocket datagramSocket;
+
+
+    /**
+     * 警告
+     */
+    private static ReceiveService receiveService;
+
+    static{
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath*:applicationContext.xml");
+        receiveService = (ReceiveService) applicationContext.getBean("receiveService");
+    }
+
+    @Override
+    public void run() {
+        //1.启动UDPServer
+        try {
+            datagramSocket = new DatagramSocket(PORT);
+        } catch (SocketException e) {
+            logger.debug("接受服务启动失败");
+        }
+        while(mark){
+            try {
+                //创建接受字节流
+                byte[] receiveMessages = new byte[MAX_LENGTH];
+                //创建数据包
+                DatagramPacket datagramPacket = new DatagramPacket(receiveMessages,receiveMessages.length);
+                datagramSocket.receive(datagramPacket);
+                String receiveString = new String(datagramPacket.getData(), 0 , datagramPacket.getLength());
+                //解析字符串
+                if(receiveString != null){
+                    String[] dataArray = receiveString.split(";");
+                    for(int index=0;index>dataArray.length;index++){
+                        String[] sensorDataArray = dataArray[index].split(":");
+                        String sensorNumber = sensorDataArray[0];
+                        String sensorValue = sensorDataArray[1];
+                        receiveService.receiveSensorData(sensorNumber,sensorValue);
+                    }
+                }
+            } catch (SocketException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+
+            }
+        }
+
+        //2.接受数据
+
+
+    }
+
+    public void close(){
+        mark = false;
+    }
+
+}
