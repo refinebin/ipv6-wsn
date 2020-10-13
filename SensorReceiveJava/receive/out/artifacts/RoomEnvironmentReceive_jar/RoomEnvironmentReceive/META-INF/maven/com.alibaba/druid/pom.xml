@@ -13,7 +13,7 @@
 
 	<properties>
 		<spring.version>4.2.5.RELEASE</spring.version>
-		<junit.version>4.12</junit.version>
+		<junit.version>4.13.1</junit.version>
 
 		<gpg.skip>false</gpg.skip>
 		<javadoc.skip>false</javadoc.skip>
